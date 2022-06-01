@@ -1,4 +1,4 @@
-# Texas Hold-Em Winning Hand Odds Calculator
+# Java BlackJack
 
 This is a program to play blackjack written in Java. Session Progress is saved to Database upon completion.
 
