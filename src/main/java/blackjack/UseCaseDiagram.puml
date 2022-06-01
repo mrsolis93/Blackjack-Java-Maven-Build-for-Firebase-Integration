@@ -1,0 +1,29 @@
+@startuml
+
+left to right direction
+actor "User" as user
+:Database: as Firebase
+
+rectangle BlackJack_Program {
+    usecase (Create \nBlackJack\n Game?) as UC1
+
+    usecase (View\nPast Game\n Results?) as UC2
+
+    usecase (Quit Program?) as UC3
+
+    usecase (Output\nGame Results) as UC4
+
+    usecase (Input\nDatabase\n Past Game Results) as UC5
+
+}
+
+user --> UC1
+user --> UC2
+user --> UC3
+UC1 --> UC4
+UC2 <-- UC5
+UC4 --> Firebase
+Firebase --> UC5
+
+
+@enduml

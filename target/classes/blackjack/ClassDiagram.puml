@@ -1,0 +1,143 @@
+@startuml
+
+
+class DisplayMain {
+==
+  + main() 
+  
+
+}
+
+DisplayMain --> Game
+Game --> Deck
+Deck --> Card
+Card --> CardRank
+Card --> CardSuit
+
+Game --> Person
+Person --> Player
+Person --> Dealer
+Player --> Hand
+Dealer --> Hand
+
+class Card {
+    -suit: CardSuit
+    -rank: CardRank
+==
+  + Card(CardSuit, CardRank)
+  + Card(Card)
+
+  
+  + getSuit() 
+  + getRank()
+  + getRankValue()
+
+  + toString()
+}
+
+
+class Hand {
+
+    -hand: ArrayList<Card>
+==
+  + getCardFromDeck(Deck) 
+  + removeCard(Card)
+  + clearHand()
+  + isEmpty()
+  + contains(Card)
+  + getCard(int)
+  + getHandValue()
+
+
+  + toString()
+}
+
+
+class Deck {
+    -deck: List<Card>
+==
+  + Deck()
+  + Deck(boolean)
+  + shuffle() 
+  + cardsRemaining()
+  + getCard(): Card
+
+
+  + toString()
+  + compareOfSomeKind()
+}
+
+class Game {
+    -player: Player
+    -deck: Deck
+    -dealer: Dealer
+    -totalGames: int
+    -wins: int
+    -losses: int
+    -ties: int
+    -playAgain: boolean
+
+==
+  + Game() 
+  + playAgain()
+
+  + startGame()
+}
+
+class Person {
+    +Suit: enum
+    -genSuit: Suit
+    -genRank: CardRank
+== 
+  + getSuit() 
+  + getCardRank()
+
+  + toString()
+  + compareOfSomeKind()
+}
+
+class Player {
+    -hand: Hand
+    -position: String
+==
+  + getHand(): Hand 
+  + setHand(Hand)
+
+  + getPosition(): String
+  + setPosition(String)
+  + setPosition(String)
+  + blackJack(): boolean
+
+  + printHand() 
+  + hit(Deck)
+}
+
+class Dealer {
+
+  + Dealer() 
+  + printDealerHand()
+
+}
+
+class CardRank {
+    -rankString: String
+    +CardRank: enum
+==
+
+  + CardRank(String, int)
+
+  + getRankString(): String 
+}
+
+class CardSuit {
+    -suitType: String
+    +CardSuit: enum
+==
+  + getSuitType(): String
+  + setSuitType(String)
+
+  + toString(): String 
+}
+
+
+@enduml
